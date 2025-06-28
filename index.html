@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&H - Thời Trang & Mỹ Phẩm Cao Cấp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="huan.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> 0123.456.789</span>
+                <span><i class="fas fa-envelope"></i> info@h&h.com</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>H&H</h1>
+                <p>Fashion & Cosmetics</p>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+                <div class="search-results" id="search-results"></div>
+            </div>
+            
+            <div class="user-actions">
+                <button id="auth-btn"><i class="fas fa-user"></i></button>
+                <button id="wishlist-btn" class="wishlist-btn" onclick="toggleWishlistModal()">
+                    <i class="fas fa-heart"></i>
+                    <span id="wishlist-count">0</span>
+                </button>
+                <button id="cart-btn" class="cart-btn" onclick="toggleCartModal()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active" data-nav-category="home">Trang chủ</a></li>
+                <li><a href="#" data-nav-category="fashion-women">Thời trang nữ</a></li>
+                <li><a href="#" data-nav-category="fashion-men">Thời trang nam</a></li>
+                <li><a href="#" data-nav-category="cosmetics">Mỹ phẩm</a></li>
+                <li><a href="#" data-nav-category="accessories">Phụ kiện</a></li>
+                <li><a href="#" data-nav-category="sale">Khuyến mãi</a></li>
+                <li><a href="#" data-nav-category="news">Tin tức</a></li>
+                <li><a href="#" data-nav-category="contact">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <!-- Hero Slider -->
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide" style="background-image: url('nền1.jpg')">
+                        <div class="slide-content">
+                            <h2>Bộ sưu tập mùa hè 2023</h2>
+                            <p>Khám phá những xu hướng thời trang mới nhất</p>
+                            <a href="#" class="btn">Mua ngay</a>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('nền2.jpg')">
+                        <div class="slide-content">
+                            <h2>Mỹ phẩm cao cấp</h2>
+                            <p>Chăm sóc da với các sản phẩm chất lượng</p>
+                            <a href="#" class="btn">Mua ngay</a>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('nền3.jpg')">
+                        <div class="slide-content">
+                            <h2>Giảm giá lên đến 50%</h2>
+                            <p>Ưu đãi đặc biệt trong tháng này</p>
+                            <a href="#" class="btn">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+        </section>
+
+        <!-- Category Tabs -->
+        <section class="category-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Danh mục sản phẩm</h2>
+                    <p>Khám phá các sản phẩm nổi bật của chúng tôi</p>
+                </div>
+                
+                <div class="category-tabs">
+                    <button class="tab active" data-category="fashion">Thời Trang</button>
+                    <button class="tab" data-category="cosmetics">Mỹ Phẩm</button>
+                </div>
+                
+                <div class="products-container" id="products-container">
+                    <!-- Sản phẩm sẽ được thêm tự động bằng JavaScript -->
+                </div>
+                
+                <div class="view-all">
+                    <a href="#" class="btn" id="view-all-products-btn">Xem tất cả sản phẩm</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Section -->
+        <section class="banner-section">
+            <div class="container">
+                <div class="banner-grid">
+                    <div class="banner-item" style="background-image: url('ThoiTrangNam.jpg')">
+                        <div class="banner-content">
+                            <h3>Thời Trang Nam</h3>
+                            <p>Phong cách lịch lãm</p>
+                        </div>
+                    </div>
+                    <div class="banner-item" style="background-image: url('ThoiTrangNu.png')">
+                        <div class="banner-content">
+                            <h3>Thời Trang Nữ</h3>
+                            <p>Quyến rũ và thanh lịch</p>
+                        </div>
+                    </div>
+                    <div class="banner-item" style="background-image: url('MyPham.jpg')">
+                        <div class="banner-content">
+                            <h3>Mỹ Phẩm</h3>
+                            <p>Chăm sóc da chuyên nghiệp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Sản phẩm nổi bật</h2>
+                    <p>Những sản phẩm được yêu thích nhất</p>
+                </div>
+                
+                <div class="products-container featured-products" id="featured-products-container">
+                    <!-- Sản phẩm nổi bật sẽ được thêm tự động -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h3>Đăng ký nhận tin</h3>
+                    <p>Nhận thông tin khuyến mãi và cập nhật sản phẩm mới</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Nhập email của bạn" required>
+                        <button type="submit" class="btn">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Về chúng tôi</h3>
+                    <p>H&H là thương hiệu thời trang và mỹ phẩm cao cấp, mang đến những sản phẩm chất lượng với thiết kế tinh tế.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Thông tin</h3>
+                    <ul>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Hệ thống cửa hàng</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liên hệ</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh</li>
+                        <li><i class="fas fa-phone"></i> 0123.456.789</li>
+                        <li><i class="fas fa-envelope"></i> info@h&h.com</li>
+                        <li><i class="fas fa-clock"></i> 8:00 - 22:00 (T2 - CN)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 H&H. Tất cả quyền được bảo lưu.</p>
+                <div class="payment-methods">
+                    <img src="visa1.jpg" alt="Visa">
+                    <img src="mastercard.png" alt="Mastercard">
+                    <img src="jcb.webp" alt="JCB">
+                    <img src="momo.png" alt="Momo">
+                    <img src="zalopay.png" alt="ZaloPay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeProductModal()">&times;</span>
+            <div class="product-detail">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img id="modal-product-main-image" src="" alt="Product Image">
+                    </div>
+                    <div class="thumbnail-images" id="modal-product-thumbnails">
+                        <!-- Thumbnails sẽ được thêm tự động -->
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 id="modal-product-title"></h2>
+                    <div class="product-meta">
+                        <div class="product-rating">
+                            <span class="stars" id="modal-product-stars"></span>
+                            <span class="review-count" id="modal-product-reviews"></span>
+                        </div>
+                        <span class="product-status in-stock" id="modal-product-status">Còn hàng</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price" id="modal-product-price"></span>
+                        <span class="original-price" id="modal-product-original-price"></span>
+                        <span class="discount" id="modal-product-discount"></span>
+                    </div>
+                    <p class="product-description" id="modal-product-description"></p>
+
+                    <div class="product-options">
+                        <div id="modal-product-colors-section">
+                            <h4>Màu sắc: <span id="selected-color-display"></span></h4>
+                            <div class="option-group" id="modal-product-colors"></div>
+                        </div>
+                        <div id="modal-product-sizes-section">
+                            <h4>Kích thước: <span id="selected-size-display"></span></h4>
+                            <div class="option-group" id="modal-product-sizes"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions-detail">
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="decrease-btn">-</button>
+                            <span class="quantity" id="quantity">1</span>
+                            <button class="quantity-btn" id="increase-btn">+</button>
+                        </div>
+                        <button class="btn btn-add-to-cart-detail" id="add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                        </button>
+                        <button class="btn btn-wishlist-detail" id="add-to-wishlist-btn">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-meta-info">
+                        <p>Mã sản phẩm: <span id="product-sku"></span></p>
+                        <p>Danh mục: <span id="product-category"></span></p>
+                    </div>
+
+                    <div class="share-buttons">
+                        <span>Chia sẻ:</span>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>Giỏ hàng của bạn</h2>
+            <span class="close-cart" onclick="toggleCartModal()">&times;</span>
+        </div>
+        <div class="cart-body">
+            <div class="cart-items" id="cart-items">
+                <!-- Sản phẩm trong giỏ hàng sẽ được thêm tự động -->
+            </div>
+            
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Tạm tính:</span>
+                    <span id="subtotal-price">0đ</span>
+                </div>
+                <div class="summary-row">
+                    <span>Giảm giá:</span>
+                    <span id="discount-price">0đ</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Tổng cộng:</span>
+                    <span id="total-price">0đ</span>
+                </div>
+                
+                <div class="coupon-form">
+                    <input type="text" placeholder="Nhập mã giảm giá">
+                    <button class="btn">Áp dụng</button>
+                </div>
+                
+                <div class="checkout-buttons">
+                    <button id="checkout-btn" class="btn btn-primary">Thanh toán</button>
+                    <button class="btn btn-secondary" onclick="toggleCartModal()">Tiếp tục mua sắm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlist-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleWishlistModal()">&times;</span>
+            <div class="wishlist-detail">
+                <h2>Danh sách yêu thích của bạn</h2>
+                <div class="wishlist-items" id="wishlist-items">
+                    <!-- Sản phẩm trong wishlist sẽ được thêm tự động -->
+                </div>
+                <div class="empty-wishlist" id="empty-wishlist" style="display: none;">
+                    <i class="fas fa-heart"></i>
+                    <p>Danh sách yêu thích của bạn đang trống</p>
+                    <button class="btn" onclick="toggleWishlistModal()">Tiếp tục mua sắm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-header">
+            <h2>Thanh toán</h2>
+            <span class="close-checkout" onclick="closeCheckout()">&times;</span>
+        </div>
+        <div class="checkout-body">
+            <div class="checkout-steps">
+                <div class="step active" data-step="1">
+                    <span>1</span>
+                    <span>Thông tin giao hàng</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span>2</span>
+                    <span>Phương thức thanh toán</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span>3</span>
+                    <span>Hoàn tất đơn hàng</span>
+                </div>
+            </div>
+            
+            <div class="checkout-content">
+                <!-- Step 1: Shipping Info -->
+                <div class="checkout-step active" id="step-1">
+                    <h3>Thông tin giao hàng</h3>
+                    <form class="shipping-form" id="shipping-form">
+                        <div class="form-group">
+                            <label for="shipping-name">Họ và tên *</label>
+                            <input type="text" id="shipping-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-phone">Số điện thoại *</label>
+                            <input type="tel" id="shipping-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-email">Email</label>
+                            <input type="email" id="shipping-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-province">Tỉnh/Thành phố *</label>
+                            <select id="shipping-province" required>
+                                <option value="">Chọn tỉnh/thành phố</option>
+                                <option value="hcm">TP. Hồ Chí Minh</option>
+                                <option value="hn">Hà Nội</option>
+                                <option value="dn">Đà Nẵng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-district">Quận/Huyện *</label>
+                            <select id="shipping-district" required>
+                                <option value="">Chọn quận/huyện</option>
+                                <option value="q1">Quận 1</option>
+                                <option value="q2">Quận 2</option>
+                                <option value="q3">Quận 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-address">Địa chỉ cụ thể *</label>
+                            <textarea id="shipping-address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-note">Ghi chú</label>
+                            <textarea id="shipping-note" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tiếp tục</button>
+                    </form>
+                </div>
+
+                <!-- Step 2: Payment Method -->
+                <div class="checkout-step" id="step-2">
+                    <h3>Phương thức thanh toán</h3>
+                    <div class="payment-methods-checkout">
+                        <div class="payment-method-item active" data-payment-method="card">
+                            <div class="payment-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h4>Thẻ ngân hàng</h4>
+                                <p>Thanh toán qua thẻ Visa, Mastercard, JCB</p>
+                            </div>
+                        </div>
+                        <div class="payment-method-item" data-payment-method="cod">
+                            <div class="payment-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h4>Tiền mặt</h4>
+                                <p>Thanh toán khi nhận hàng (COD)</p>
+                            </div>
+                        </div>
+                        <div class="payment-method-item" data-payment-method="e-wallet">
+                            <div class="payment-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h4>Ví điện tử</h4>
+                                <p>Momo, ZaloPay, VNPay</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary-checkout">
+                        <h3>Tóm tắt đơn hàng</h3>
+                        <div class="order-items-checkout" id="checkout-order-items">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span id="order-subtotal">0đ</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển:</span>
+                            <span>30.000đ</span>
+                        </div>
+                        <div class="summary-row order-total-checkout">
+                            <span>Tổng cộng:</span>
+                            <span id="order-total">0đ</span>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="nextCheckoutStep()">Xác nhận và Thanh toán</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Complete Order -->
+                <div class="checkout-step" id="step-3">
+                    <div class="complete-order">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Đặt hàng thành công!</h3>
+                        <p>Cảm ơn bạn đã mua sắm tại H&H</p>
+                        <p>Mã đơn hàng: <strong id="order-number">#H&H{{randomNumber}}</strong></p>
+                        <p>Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+                        <a href="#" class="btn btn-primary" onclick="closeCheckout()">Trở về trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-content">
+            <span class="close-auth" onclick="closeAuthModal()">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Đăng nhập</button>
+                <button class="auth-tab" data-tab="register">Đăng ký</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form class="auth-form active" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email *</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mật khẩu *</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-group">
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                
+                <div class="social-login">
+                    <p>Hoặc đăng nhập bằng</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Register Form -->
+            <form class="auth-form" id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Họ và tên *</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email *</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Mật khẩu *</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Nhập lại mật khẩu *</label>
+                    <input type="password" id="register-confirm-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">Số điện thoại *</label>
+                    <input type="tel" id="register-phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+                
+                <div class="social-login">
+                    <p>Hoặc đăng ký bằng</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu-btn" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <span class="close-mobile-menu" onclick="closeMobileMenu()">&times;</span>
+            <ul>
+                <li><a href="#" class="active" data-nav-category="home">Trang chủ</a></li>
+                <li><a href="#" data-nav-category="fashion-women">Thời trang nữ</a></li>
+                <li><a href="#" data-nav-category="fashion-men">Thời trang nam</a></li>
+                <li><a href="#" data-nav-category="cosmetics">Mỹ phẩm</a></li>
+                <li><a href="#" data-nav-category="accessories">Phụ kiện</a></li>
+                <li><a href="#" data-nav-category="sale">Khuyến mãi</a></li>
+                <li><a href="#" data-nav-category="news">Tin tức</a></li>
+                <li><a href="#" data-nav-category="contact">Liên hệ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Kết nối file JavaScript -->
+    <script src="huan.js"></script>
+</body>
+</html>
